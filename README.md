@@ -92,6 +92,19 @@
 - **주요 적용 모델**: `smilegate-ai/kor_unsmile`
   - Hugging Face `transformers` 기반 한국어 혐오표현 분류 모델
   - `TextClassificationPipeline` + `sigmoid` 스코어를 사용해 문장 단위 라벨 추론
+  - 모델 링크: [https://huggingface.co/smilegate-ai/kor_unsmile](https://huggingface.co/smilegate-ai/kor_unsmile)
+
+### 모델이 학습한 데이터셋
+
+- **Korean UnSmile Dataset**(Smilegate AI에서 공개한 한국어 혐오표현 분류 데이터셋)을 기반으로 학습된 모델을 사용했습니다.
+- 데이터셋 링크: [https://github.com/smilegate-ai/korean_unsmile_dataset](https://github.com/smilegate-ai/korean_unsmile_dataset)
+- 데이터셋은 온라인 텍스트를 다중 라벨 관점에서 분류할 수 있도록 구성되어 있으며, 대표적으로 아래 범주의 라벨을 포함합니다.
+  - `clean`(비혐오)
+  - `악플/욕설`
+  - `여성/가족`, `남성`
+  - `인종/국적`, `지역`
+  - `연령`, `종교`, `성소수자`, `기타 혐오`
+- 본 프로젝트에서는 이 사전학습/파인튜닝된 공개 모델을 그대로 활용해, 수집한 제목/본문/댓글 텍스트를 동일한 라벨 체계로 매핑해 분포를 확인했습니다.
 
 ### 라벨링 방식
 
@@ -143,3 +156,12 @@
 - 로그인 계정 정보는 코드에 직접 저장하지 말고, 로컬 환경 변수나 입력 방식으로 주입하는 것을 권장합니다.
 - 사이트 이용약관/robots 정책/요청 빈도 제한을 준수해야 합니다.
 - `final.ipynb`는 Colab 경로(`/content/drive/...`) 기반 코드가 포함되어 있어, 로컬 실행 시 파일 경로 수정이 필요합니다.
+
+---
+
+## 9) 참고 링크
+
+- Korean UnSmile Dataset (GitHub): [https://github.com/smilegate-ai/korean_unsmile_dataset](https://github.com/smilegate-ai/korean_unsmile_dataset)
+- `smilegate-ai/kor_unsmile` 모델 (Hugging Face): [https://huggingface.co/smilegate-ai/kor_unsmile](https://huggingface.co/smilegate-ai/kor_unsmile)
+
+<sub>※ 라이선스 참고: UnSmile 데이터셋(CC-BY-NC-ND 4.0), baseline 코드/모델(Apache 2.0)</sub>
